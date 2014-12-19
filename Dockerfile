@@ -18,14 +18,14 @@ RUN dpkg -i libgmp3c2_4.3.2*.deb
 
 # Install ghc7.8.3
 RUN wget -q -O ghc.tar.bz2 http://www.haskell.org/ghc/dist/7.8.3/ghc-7.8.3-x86_64-unknown-linux-deb7.tar.bz2
-RUN tar xvfj ghc.tar.bz2
+RUN tar xfj ghc.tar.bz2
 RUN cd ghc-7.8.3 && ./configure
 RUN cd ghc-7.8.3 && make install
 RUN rm -rf ghc.tar.bz2 ghc-7.8.3
 
 # Install cabal1.20.0.3
 RUN wget -q -O cabal.tar.gz http://www.haskell.org/cabal/release/cabal-install-1.20.0.3/cabal-install-1.20.0.3.tar.gz
-RUN tar xvfz cabal.tar.gz
+RUN tar xfz cabal.tar.gz
 RUN cd cabal-install-1.20.0.3 && ./bootstrap.sh
 RUN rm -rf cabal-install-1.20.0.3 cabal.tar.gz
 ENV PATH /.cabal/bin:$PATH
