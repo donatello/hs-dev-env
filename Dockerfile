@@ -28,6 +28,5 @@ RUN wget -q -O cabal.tar.gz http://www.haskell.org/cabal/release/cabal-install-1
 RUN tar xfz cabal.tar.gz
 RUN cd cabal-install-1.20.0.3 && ./bootstrap.sh
 RUN rm -rf cabal-install-1.20.0.3 cabal.tar.gz
-ENV PATH /.cabal/bin:$PATH
-
+ENV PATH /root/.cabal/bin:$PATH
 RUN cabal update
