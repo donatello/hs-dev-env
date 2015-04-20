@@ -29,4 +29,3 @@ RUN tar xfz cabal.tar.gz
 RUN cd cabal-install-1.22.0.0 && ./bootstrap.sh
 RUN rm -rf cabal-install-1.20.0.3 cabal.tar.gz
 ENV PATH /root/.cabal/bin:$PATH
-RUN cabal update
