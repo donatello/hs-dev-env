@@ -14,6 +14,5 @@ RUN apt-get update
 RUN apt-get install -y cabal-install-1.20 ghc-7.8.4
 
 RUN echo 'export PATH=~/.cabal/bin:/opt/cabal/1.20/bin:/opt/ghc/7.8.4/bin:$PATH' >> ~/.bashrc
-RUN export PATH=~/.cabal/bin:/opt/cabal/1.20/bin:/opt/ghc/7.8.4/bin:$PATH
-RUN cabal update
-RUN cabal install alex happy
+RUN /opt/cabal/1.20/bin/cabal update
+RUN /opt/cabal/1.20/bin/cabal install alex happy
