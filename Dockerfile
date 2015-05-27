@@ -12,7 +12,23 @@ RUN apt-get install -y software-properties-common
 RUN add-apt-repository -y ppa:hvr/ghc
 RUN apt-get update
 RUN apt-get install -y cabal-install-1.22 ghc-7.8.4
+RUN apt-get install -y wget
 
-RUN echo 'export PATH=~/.cabal/bin:/opt/cabal/1.22/bin:/opt/ghc/7.8.4/bin:$PATH' >> ~/.bashrc
-RUN PATH=~/.cabal/bin:/opt/cabal/1.22/bin:/opt/ghc/7.8.4/bin:$PATH cabal update
-RUN PATH=~/.cabal/bin:/opt/cabal/1.22/bin:/opt/ghc/7.8.4/bin:$PATH cabal install alex happy
+ENV PATH /root/.cabal/bin:/opt/cabal/1.22/bin:/opt/ghc/7.8.4/bin:$PATH
+
+RUN cabal update
+RUN mkdir /opt/sandbox-for-stackage
+
+WORKDIR /opt/sandbox-for-stackage
+RUN wget -q -O cabal.config http://stackage.org/lts/cabal.config
+RUN cabal sandbox init
+RUN cabal update
+RUN cabal install stackage-cli
+
+# stk binary at: /opt/sandbox-for-stackage/.cabal-sandbox/bin/stackage
+
+# Add stackage binary to path
+ENV PATH /opt/sandbox-for-stackage/.cabal-sandbox/bin:$PATH
+
+WORKDIR /root
+ENTRYPOINT ["/bin/bash"]
