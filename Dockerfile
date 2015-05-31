@@ -24,5 +24,35 @@ RUN wget -q -O /opt/shared-sandbox/cabal.config https://www.stackage.org/snapsho
 
 ENV CABAL_SANDBOX_CONFIG /opt/shared-sandbox/cabal.sandbox.config
 
+# install a selection of common packages
+RUN cabal update
+RUN cabal install \
+    alex \
+    async \
+    attoparsec \
+    bytestring \
+    cereal \
+    conduit \
+    conduit-combinators \
+    conduit-extra \
+    containers \
+    csv-conduit \
+    datetime \
+    happy \
+    mtl \
+    network \
+    optparse-applicative \
+    persistent \
+    persistent-postgresql \
+    persistent-template \
+    posrgresql-libpq \
+    postgresql-simple \
+    resourcet \
+    split \
+    strings \
+    text \
+    transformers \
+    vector
+
 WORKDIR /code
 ENTRYPOINT ["/bin/bash"]
