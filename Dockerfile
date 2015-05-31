@@ -6,7 +6,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 # Install basic needed packages
 RUN apt-get update
-RUN apt-get install -y software-properties-common wget zlib1g-dev
+RUN apt-get install -y software-properties-common wget zlib1g-dev libpq-dev
 
 # Herbert's PPA, as recommended by https://www.stackage.org/install
 RUN add-apt-repository -y ppa:hvr/ghc
