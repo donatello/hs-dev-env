@@ -45,7 +45,7 @@ RUN cabal install \
     persistent \
     persistent-postgresql \
     persistent-template \
-    posrgresql-libpq \
+    postgresql-libpq \
     postgresql-simple \
     resourcet \
     split \
