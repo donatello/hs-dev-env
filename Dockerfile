@@ -11,7 +11,7 @@ RUN apt-get install -y software-properties-common wget zlib1g-dev libpq-dev
 # Herbert's PPA, as recommended by https://www.stackage.org/install
 RUN add-apt-repository -y ppa:hvr/ghc
 RUN apt-get update
-RUN apt-get install -y cabal-install-1.22 ghc-7.8.4
+RUN apt-get install -y cabal-install-1.22 ghc-7.8.4 ghc-7.8.4-prof
 
 ENV PATH /root/.cabal/bin:/opt/cabal/1.22/bin:/opt/ghc/7.8.4/bin:$PATH
 
@@ -19,8 +19,8 @@ RUN mkdir /opt/shared-sandbox
 WORKDIR /opt/shared-sandbox
 RUN cabal sandbox init --sandbox .
 
-# Select Stackage LTS 2.10
-RUN wget -q -O /opt/shared-sandbox/cabal.config https://www.stackage.org/snapshot/lts-2.10/cabal.config
+# Select Stackage LTS 2.19
+RUN wget -q -O /opt/shared-sandbox/cabal.config https://www.stackage.org/snapshot/lts-2.19/cabal.config
 
 ENV CABAL_SANDBOX_CONFIG /opt/shared-sandbox/cabal.sandbox.config
 
@@ -31,6 +31,7 @@ RUN cabal install \
     async \
     attoparsec \
     bytestring \
+    c2hs \
     cereal \
     conduit \
     conduit-combinators \
