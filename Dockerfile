@@ -31,7 +31,6 @@ RUN cabal install \
     async \
     attoparsec \
     bytestring \
-    c2hs \
     cereal \
     conduit \
     conduit-combinators \
@@ -54,6 +53,9 @@ RUN cabal install \
     text \
     transformers \
     vector
+
+RUN cabal install \
+    c2hs
 
 WORKDIR /code
 ENTRYPOINT ["/bin/bash"]
