@@ -39,6 +39,8 @@ RUN cabal install \
     csv-conduit \
     datetime \
     happy \
+    hasql \
+    hasql-postgres \
     mtl \
     network \
     optparse-applicative \
