@@ -35,6 +35,7 @@ RUN cabal install \
     conduit \
     conduit-combinators \
     conduit-extra \
+    configurator \
     containers \
     csv-conduit \
     datetime \
