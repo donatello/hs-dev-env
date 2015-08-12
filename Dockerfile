@@ -22,6 +22,9 @@ RUN cabal sandbox init --sandbox .
 # Select Stackage LTS 2.19
 RUN wget -q -O /opt/shared-sandbox/cabal.config https://www.stackage.org/snapshot/lts-2.19/cabal.config
 
+# enable profiling in the sandbox
+RUN echo "library-profiling: True" >> /opt/shared-sandbox/cabal.config
+
 ENV CABAL_SANDBOX_CONFIG /opt/shared-sandbox/cabal.sandbox.config
 
 # install a selection of common packages
