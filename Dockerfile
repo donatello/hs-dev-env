@@ -63,5 +63,7 @@ RUN cabal install \
 RUN cabal install \
     c2hs
 
+ENV PATH /opt/shared-sandbox/bin:$PATH
+
 WORKDIR /code
 ENTRYPOINT ["/bin/bash"]
