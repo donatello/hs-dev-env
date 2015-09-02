@@ -7,6 +7,7 @@ ENV DEBIAN_FRONTEND noninteractive
 # Install needed packages for most basic development
 RUN apt-get update && apt-get install -yq \
     build-essential \
+    ghc-7.10.2-prof \
     libpq-dev \
     libyajl-dev \
     nano \
